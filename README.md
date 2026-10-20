@@ -4,7 +4,8 @@
 
 **쿠팡을 벤치마킹한 MVC 아키텍처 기반 이커머스 웹 서비스**
 
-<img src="docs/images/main.jpg" width="720" alt="GoodPang 메인 화면">
+<!-- 로고 이미지가 있다면 docs/images/logo.png 로 올리고 아래 주석을 푸세요 -->
+<!-- <img src="docs/images/logo.png" width="240"> -->
 
 </div>
 
@@ -38,11 +39,6 @@ Spring 같은 프레임워크 없이 **순수 Java/JSP로 Front Controller와 Ha
 
 ## 🏗 시스템 아키텍처
 
-<img src="docs/images/architecture.jpg" width="720" alt="주문 내역 조회 및 취소 아키텍처">
-
-<details>
-<summary>요청 처리 흐름 다이어그램</summary>
-
 ```mermaid
 flowchart LR
     A[Browser] -->|요청| B[Front Controller<br>Servlet]
@@ -57,8 +53,6 @@ flowchart LR
     H -->|응답| A
 ```
 
-</details>
-
 <br>
 
 ## 🙋‍♀️ 담당 역할 (오수빈)
@@ -66,10 +60,6 @@ flowchart LR
 ### 1. 주문 내역 및 상세 조회
 - JOIN과 서브쿼리로 주문 상품, 결제 금액, 배송 상태를 조회하는 DAO와 서비스 로직 구현
 - 한 페이지에 최대 3건의 주문 출력, 같은 주문번호의 여러 상품은 한 주문 카드 안에 묶어 표시
-
-| 주문 목록 | 주문 상세 |
-|---|---|
-| <img src="docs/images/order-list.jpg" width="360"> | <img src="docs/images/order-detail.jpg" width="360"> |
 
 ### 2. 조건별 주문 검색
 - 주문 상태(진행 / 취소 / 완료)와 조회 기간으로 결과를 필터링하는 Servlet 핸들러 및 DAO 로직 구현
@@ -80,20 +70,20 @@ flowchart LR
 - 환불 완료 예정일 컬럼(`expected_cancel_date`)을 설계하고 JSTL `<fmt:formatDate>`로 `M/dd(E)` 형식 표시
 - 카드사·은행 코드를 SQL `CASE WHEN`으로 '비씨카드', '신한은행' 등 한글 명칭으로 변환해 DTO에 바인딩
 
-| 주문 취소 | 취소 내역 | 취소 상세 |
-|---|---|---|
-| <img src="docs/images/order-cancel.jpg" width="260"> | <img src="docs/images/cancel-list.jpg" width="260"> | <img src="docs/images/cancel-detail.jpg" width="260"> |
-
 ### 4. 배송 조회
 - 배송 상태, 도착 완료일, 송장번호, 회원 정보를 조회
 - 마이페이지 주소가 아닌 주문 시점 스냅샷 테이블 `ORDER_ADDRESS`를 조인해 주소 변경으로 인한 데이터 오염 방지
 - `<c:forEach>`로 배송 현황(시간 · 위치 · 상태)을 최신순 3열 리스트로 출력
 
-<img src="docs/images/delivery.jpg" width="420" alt="배송 조회 화면">
-
 ### 5. 공통 디자인
 - 프로젝트 로고, 배너 리소스, 파비콘 제작 및 적용
 
+<!-- 화면 캡처를 docs/images/ 에 올리고 아래 주석을 풀면 됩니다 -->
+<!--
+| 주문 내역 | 취소 내역 | 배송 조회 |
+|---|---|---|
+| <img src="docs/images/order.png" width="280"> | <img src="docs/images/cancel.png" width="280"> | <img src="docs/images/delivery.png" width="280"> |
+-->
 
 <br>
 
@@ -150,7 +140,9 @@ GoodPang
 
 <br>
 
-## 📄 문서
+## 📄 팀 문서
+
+> 팀원들이 작성한 프로젝트 공통 문서입니다.
 
 - [관리자(/admin) URL 목록](docs/관리자_URL_목록.md)
 - [배송 JSON API](docs/배송_JSON_API.md)
